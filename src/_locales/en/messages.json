@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "Calendar Duplicate Finder"
+  },
+  "extDesc": {
+    "message": "Finds duplicate calendar events – also across calendars –, shows them in groups and deletes the entries you select, with an automatic ICS backup."
+  },
+  "actionTitle": {
+    "message": "Find duplicate calendar events"
+  },
+  "actionLabel": {
+    "message": "Duplicates"
+  },
+  "menuOpen": {
+    "message": "Find duplicate calendar events …"
+  }
+}

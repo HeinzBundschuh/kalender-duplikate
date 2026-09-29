@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "Kalender-Duplikate"
+  },
+  "extDesc": {
+    "message": "Findet doppelte Kalendertermine – auch zwischen mehreren Kalendern –, zeigt sie gruppiert an und löscht die ausgewählten Einträge mit automatischem ICS-Backup."
+  },
+  "actionTitle": {
+    "message": "Kalender-Duplikate suchen"
+  },
+  "actionLabel": {
+    "message": "Duplikate"
+  },
+  "menuOpen": {
+    "message": "Kalender-Duplikate suchen …"
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Kalender-Duplikate</title>
+  <link rel="stylesheet" href="duplicates.css">
+</head>
+<body>
+  <header>
+    <h1 data-t>Kalender-Duplikate</h1>
+    <p class="sub" data-t>Doppelte Termine finden, auswählen und löschen. Vor jedem Löschen wird automatisch ein ICS-Backup im Download-Ordner angelegt.</p>
+  </header>
+
+  <section class="panel" id="options">
+    <div class="col">
+      <h2 data-t>Kalender</h2>
+      <div id="calendars" class="checklist"></div>
+      <h2 data-t>Vergleichen</h2>
+      <select id="compareMode">
+        <option value="all" data-t>innerhalb und zwischen den Kalendern</option>
+        <option value="within" data-t>nur innerhalb jedes Kalenders</option>
+        <option value="cross" data-t>nur zwischen verschiedenen Kalendern</option>
+      </select>
+    </div>
+
+    <div class="col">
+      <h2 data-t>Als doppelt gilt, wenn gleich sind …</h2>
+      <div class="title-row">
+        <span data-t>Titel</span>
+        <select id="titleMode">
+          <option value="exact" data-t>genau gleich</option>
+          <option value="words" data-t>mindestens gemeinsame Wörter</option>
+          <option value="any" data-t>egal (nur Datum/Uhrzeit vergleichen)</option>
+        </select>
+        <input type="number" id="minWords" min="1" max="9" value="2" title="Anzahl gemeinsamer Wörter" data-t-title>
+      </div>
+      <div id="titleHint" class="small hint" data-t>Füllwörter wie „der“, „und“, „am“ zählen nicht. Hat ein Titel weniger Wörter, müssen alle seine Wörter im anderen vorkommen.</div>
+      <label class="inline"><input type="checkbox" id="cmpStart" checked> <span data-t>Beginn</span></label>
+      <label class="inline"><input type="checkbox" id="cmpEnd" checked> <span data-t>Ende</span></label>
+      <label class="inline"><input type="checkbox" id="cmpLocation"> <span data-t>Ort</span></label>
+      <label class="inline"><input type="checkbox" id="cmpDescription"> <span data-t>Beschreibung</span></label>
+      <label class="inline"><input type="checkbox" id="looseTitle" checked> <span data-t>Groß-/Kleinschreibung, Leerzeichen, Satzzeichen und Emojis im Titel ignorieren</span></label>
+    </div>
+
+    <div class="col">
+      <h2 data-t>Zeitraum (optional)</h2>
+      <label><span data-t>von</span> <input type="date" id="from"></label>
+      <label><span data-t>bis</span> <input type="date" id="to"></label>
+
+      <h2 data-t>Vorauswahl – behalten wird je Gruppe</h2>
+      <select id="keepStrategy">
+        <option value="oldest" data-t>der älteste Eintrag (zuerst angelegt)</option>
+        <option value="newest" data-t>der zuletzt geänderte Eintrag</option>
+        <option value="calendarOrder" data-t>der Eintrag im zuerst gelisteten Kalender</option>
+      </select>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <button id="search" class="primary" data-t>Duplikate suchen</button>
+    <button id="preselect" disabled data-t>Vorauswahl anwenden</button>
+    <button id="clear" disabled data-t>Auswahl aufheben</button>
+    <span class="spacer"></span>
+    <button id="delete" class="danger" disabled>Ausgewählte löschen (0)</button>
+  </div>
+
+  <div id="status" class="status"></div>
+  <div id="groups"></div>
+
+  <script src="i18n.js"></script>
+  <script src="calendar-api.js"></script>
+  <script src="duplicates.js"></script>
+</body>
+</html>
